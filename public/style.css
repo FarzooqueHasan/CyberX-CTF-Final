@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@400;500&display=swap');
+
+:root {
+  --primary-color: #00ffe1;
+  --secondary-color: #00bcd4;
+  --bg-gradient: linear-gradient(to right top, #0f0c29, #302b63, #24243e);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --error-red: #ff4f4f;
+  --success-green: #00e676;
+  --font-orbitron: 'Orbitron', sans-serif;
+  --font-poppins: 'Poppins', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-poppins);
+  background: var(--bg-gradient);
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+h1, h2 {
+  font-family: var(--font-orbitron);
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+  text-shadow: 0 0 8px var(--primary-color);
+}
+
+.container {
+  max-width: 700px;
+  width: 90%;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 40px 30px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  animation: fadeIn 0.8s ease-out;
+}
+
+.btn {
+  background: var(--primary-color);
+  color: black;
+  padding: 12px 24px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: var(--font-orbitron);
+  transition: 0.3s ease-in-out;
+}
+
+.btn:hover {
+  background: white;
+  transform: scale(1.05);
+  box-shadow: 0 0 8px var(--primary-color);
+}
+
+.flag-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input[type="text"],
+input[type="password"] {
+  padding: 14px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  outline: none;
+  font-family: var(--font-poppins);
+}
+
+.result-placeholder {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: var(--secondary-color);
+  text-align: center;
+}
+
+.flag-counter {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 12px 20px;
+  border-radius: 10px;
+  color: #00fff7;
+  font-family: var(--font-orbitron);
+  font-size: 1rem;
+  border: 1px solid #00fff7;
+  backdrop-filter: blur(6px);
+  z-index: 999;
+}
+
+.error-message {
+  color: var(--error-red);
+  text-align: center;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.success-message {
+  color: var(--success-green);
+  text-align: center;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.scoreboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+}
+
+.scoreboard-table th,
+.scoreboard-table td {
+  border: 1px solid #00fff7;
+  padding: 12px;
+  text-align: center;
+}
+
+.scoreboard-table th {
+  background-color: rgba(0, 255, 255, 0.1);
+  font-family: var(--font-orbitron);
+  color: #00fff7;
+}
+
+.scoreboard-table td {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #eee;
+}
+
+.welcome-body {
+  font-family: var(--font-orbitron);
+  background: radial-gradient(ellipse at center, #0f0c29 0%, #302b63 50%, #24243e 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.welcome-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  padding: 50px 60px;
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
+  text-align: center;
+  max-width: 800px;
+  width: 90%;
+}
+
+.cyber-heading {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  color: #00fff7;
+  text-shadow: 0 0 10px #00fff7;
+  animation: glowPulse 2.5s infinite ease-in-out, flicker 6s infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    text-shadow: 0 0 10px #00fff7, 0 0 20px #00fff7;
+    opacity: 1;
+  }
+  50% {
+    text-shadow: 0 0 20px #00fff7, 0 0 40px #00fff7;
+    opacity: 0.85;
+  }
+}
+
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
+  20%, 24%, 55% { opacity: 0.2; }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 30px 20px;
+  }
+
+  .btn {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .flag-counter {
+    font-size: 0.9rem;
+  }
+
+  .welcome-card {
+    padding: 30px 25px;
+  }
+}
+
+.shake {
+  animation: shake 0.4s;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}

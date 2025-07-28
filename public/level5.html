@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Level 5 | CyberX CTF</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1 class="cyber-heading">🧠 Level 5: Root Matrix Access</h1>
+    <p>Decrypt, Analyze, or Fall. The final wall of CyberX stands before you.</p>
+
+    <ul class="instruction-list">
+      <li>This level has dynamic behavior. Each 60 seconds, the code set rotates.</li>
+      <li>You must find the correct flag from one of the 3 challenge versions.</li>
+      <li>Landmines exist. A wrong flag may reset you to Level 0.</li>
+    </ul>
+
+    <form method="POST" action="/submitFlag" class="flag-form">
+      <input type="text" name="flag" placeholder="Enter final flag here..." required />
+      <button type="submit" class="btn">Submit Flag</button>
+    </form>
+    <div id="result" class="result-placeholder"></div>
+  </div>
+
+  <div class="flag-counter">Flags Collected: <span id="flagCount">0</span></div>
+
+  <h1>Level 5</h1>
+<button onclick="alert('FLAG{final_master_flag}')">Click Me</button>
+
+  <script src="js/submit.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "level0": {
+    "default": ["FLAG{start_here}"]
+  },
+  "level1": {
+    "default": ["FLAG{c3RhcnRfaGVyZQ==}"]
+  },
+  "level2": {
+    "default": ["FLAG{syntac_early_generated}"]
+  },
+  "level3": {
+    "default": ["FLAG{chunky_streams_inbound}"]
+  },
+  "level4": {
+    "default": ["FLAG{CZvMongFjw4w9hkiAn}"]
+  },
+  "level5": {
+    "default": ["FLAG{network_flag5}"]
+  },
+  "masterkey": "FLAG{the_master_flag}",
+  "decoys": ["FLAG{fake1}", "FLAG{trick2}"]
+}

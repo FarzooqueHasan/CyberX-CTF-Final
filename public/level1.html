@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Level 1 | CyberX CTF</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🧠 Level 1: Echoes of the Machine</h1>
+    <p>All machines speak, but not all listen. Some whispers lie hidden beyond the veil of visuals...</p>
+
+    <form method="POST" action="/submitFlag" class="flag-form">
+      <input type="text" name="flag" placeholder="Enter the key decoded from within..." required />
+      <button type="submit" class="btn">Submit Flag</button>
+    </form>
+    <div id="result" class="result-placeholder"></div>
+  </div>
+
+  <div class="flag-counter">Flags Collected: <span id="flagCount">0</span></div>
+
+  <script src="/js/level1.js"></script>
+  <script src="/js/submit.js"></script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wait Room | CyberX CTF</title>
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    .wait-container {
+      text-align: center;
+      padding: 40px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(0, 255, 255, 0.2);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
+    }
+
+    .timer {
+      font-size: 3rem;
+      font-family: 'Orbitron', sans-serif;
+      color: #00fff7;
+      text-shadow: 0 0 10px #00fff7;
+      margin-bottom: 20px;
+    }
+
+    .flag-form {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .flag-form input[type="text"] {
+      padding: 12px;
+      border-radius: 6px;
+      border: none;
+      font-size: 1rem;
+    }
+
+    .hidden-message {
+      color: #00ffe1;
+      margin-top: 10px;
+      font-size: 1rem;
+      display: none;
+    }
+
+    .btn-disabled {
+      background-color: gray;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body class="welcome-body">
+  <div class="welcome-card wait-container">
+    <h1 class="cyber-heading">⏳ Wait Room</h1>
+    <p>Please wait while the next system initializes...</p>
+    <div id="timer" class="timer">03:00</div>
+
+    <form id="flagCheckForm" class="flag-form">
+      <input type="text" id="fakeFlag" placeholder="Found something suspicious? Enter it here...">
+      <button type="submit" class="btn">Submit Clue</button>
+      <p class="hidden-message" id="flagResponse">Interesting... systems re-adjusting!</p>
+    </form>
+
+    <button id="continueBtn" class="btn btn-disabled" disabled>Continue</button>
+  </div>
+
+  <script>
+    let duration = 180; // Default: 3 minutes
+    let interval;
+    let adjusted = false;
+
+    function updateTimerDisplay(seconds) {
+      const mins = String(Math.floor(seconds / 60)).padStart(2, '0');
+      const secs = String(seconds % 60).padStart(2, '0');
+      document.getElementById('timer').textContent = `${mins}:${secs}`;
+    }
+
+    function startTimer() {
+      updateTimerDisplay(duration);
+      interval = setInterval(() => {
+        if (duration <= 0) {
+          clearInterval(interval);
+          document.getElementById('continueBtn').disabled = false;
+          document.getElementById('continueBtn').classList.remove('btn-disabled');
+          return;
+        }
+        duration--;
+        updateTimerDisplay(duration);
+      }, 1000);
+    }
+
+    document.getElementById('flagCheckForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const input = document.getElementById('fakeFlag').value.trim().toLowerCase();
+
+      // You can modify/add keywords as clues/flags
+      if (["cyberx{wait-time-reduced}", "clue42", "matrix-key"].includes(input)) {
+        if (!adjusted) {
+          duration = Math.min(duration, 60); // Adjust to 1 minute max
+          adjusted = true;
+          document.getElementById('flagResponse').style.display = 'block';
+        }
+      } else {
+        document.getElementById('flagResponse').textContent = "No system recognition.";
+        document.getElementById('flagResponse').style.display = 'block';
+      }
+    });
+
+    document.getElementById('continueBtn').addEventListener('click', () => {
+      window.location.href = 'level1.html'; // Change as per progression
+    });
+
+    startTimer();
+  </script>
+</body>
+</html>

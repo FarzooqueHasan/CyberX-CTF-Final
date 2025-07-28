@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up | CyberX CTF</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body class="welcome-body">
+  <div class="welcome-card">
+    <h1 class="cyber-heading">📝 Create Your CyberX Account</h1>
+
+    <form action="/signup" method="POST" class="flag-form">
+      <input type="text" name="userID" placeholder="Admission ID" required />
+      <input type="password" name="password" placeholder="Password" required />
+      <input type="text" name="name" placeholder="Full Name" required />
+      <input type="text" name="class" placeholder="Class / Grade" required />
+      <button type="submit" class="btn">Sign Up</button>
+    </form>
+
+    <p style="margin-top: 10px;">Already Registered? <a href="/login.html" class="btn">Login Here</a></p>
+    <a href="/" class="btn" style="margin-top: 20px;">← Back to Home</a>
+  </div>
+</body>
+</html>

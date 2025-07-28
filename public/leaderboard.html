@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Leaderboard | CyberX CTF</title>
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    .scoreboard-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 30px;
+    }
+
+    .scoreboard-table th, .scoreboard-table td {
+      border: 1px solid #00fff7;
+      padding: 12px;
+      text-align: center;
+    }
+
+    .scoreboard-table th {
+      background-color: rgba(0, 255, 255, 0.1);
+      font-family: 'Orbitron', sans-serif;
+      color: #00fff7;
+    }
+
+    .scoreboard-table td {
+      background-color: rgba(255, 255, 255, 0.05);
+      color: #eee;
+    }
+  </style>
+</head>
+<body class="welcome-body">
+  <div class="welcome-card" style="max-width: 800px;">
+    <h1 class="cyber-heading">📊 CyberX Scoreboard</h1>
+    
+    <table class="scoreboard-table" id="leaderboard">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Username</th>
+          <th>Score</th>
+          <th>Time Bonus</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Dynamic rows inserted by JS -->
+      </tbody>
+    </table>
+
+    <div style="margin-top: 30px; text-align: center;">
+      <a href="/" class="btn">🏠 Home</a>
+    </div>
+  </div>
+
+ <script>
+  fetch('/api/leaderboard')
+    .then(res => res.json())
+    .then(data => {
+      const table = document.querySelector('.scoreboard-table');
+      if (data && data.length > 0) {
+        table.innerHTML = `
+          <tr><th>Rank</th><th>Username</th><th>Score</th></tr>
+        `;
+        data.forEach((user, idx) => {
+          const row = document.createElement("tr");
+          row.innerHTML = `<td>${idx + 1}</td><td>${user.name}</td><td>${user.score}</td>`;
+          table.appendChild(row);
+        });
+      }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Level 0 | CyberX CTF</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🔐 Level 0: Enter the Matrix</h1>
+    <p>Begin your journey. The gateway lies hidden in the source...</p>
+
+    <form method="POST" action="/submitFlag" class="flag-form">
+      <input type="text" name="flag" placeholder="Enter flag here..." required />
+      <button type="submit" class="btn">Submit Flag</button>
+    </form>
+
+    <div id="result" class="result-placeholder"></div>
+  </div>
+
+  <div class="flag-counter">Flags Collected: <span id="flagCount">0</span></div>
+
+  <script src="js/submit.js"></script>
+
+  <!-- Hidden debug and analytics script containing the flag -->
+  <script>
+    const _dbgAnalytics = {
+      meta: {
+        version: '1.9.34-beta',
+        sessionID: '9xz12nAXWQl34',
+        userToken: 'guest-temp',
+        boot: true
+      },
+      // Internal log stash buffer
+      logs: [
+        { ts: 17237829, msg: 'booting client' },
+        { ts: 17237833, msg: 'connecting server endpoint' },
+        { ts: 17237836, msg: 'loading modules' },
+        { ts: 17237841, msg: 'initial handshake accepted' },
+        { ts: 17237845, msg: 'FLAG=start_here' },  // 👈 HIDDEN FLAG (no comment)
+        { ts: 17237851, msg: 'telemetry injected' }
+      ],
+      tracker: function () {
+        return this.logs.map(l => l.ts + '_' + l.msg.slice(0, 4)).join(':');
+      }
+    };
+
+    function debugTrace() {
+      // This function simulates telemetry (but does nothing)
+      let out = '';
+      for (let i = 0; i < _dbgAnalytics.logs.length; i++) {
+        out += `[${_dbgAnalytics.logs[i].ts}] ${_dbgAnalytics.logs[i].msg}\n`;
+      }
+      return out;
+    }
+
+    (function simulateEnv() {
+      const envs = ['dev', 'prod', 'qa'];
+      const idx = Math.floor(Math.random() * envs.length);
+      const env = envs[idx];
+      const silent = env === 'prod';
+      if (!silent) console.log("Simulated Env:", env);
+    })();
+  </script>
+
+  <!-- Invisible div mimicking CMS layout tool -->
+  <div id="x-grid-builder" style="display: none;">
+    <section data-grid="12x12" data-uuid="5f7ad9a">
+      <div data-mod="media-container">
+        <p style="font-family: monospace; font-size: 10px;">
+          system.register(‘flag’, ‘start_here’, { exp: 99999 });
+        </p>
+        <input type="hidden" data-flag-id="hiddenFlag_0" value="start_here" />
+      </div>
+    </section>
+  </div>
+
+  <!-- Additional "junk" code to simulate a real SPA -->
+  <script>
+    class FakeComponent {
+      constructor(name) {
+        this.name = name;
+        this.state = {};
+        this.mounted = false;
+      }
+
+      mount() {
+        this.mounted = true;
+        this.state.loaded = true;
+        console.log(`${this.name} mounted`);
+      }
+
+      update(key, value) {
+        this.state[key] = value;
+      }
+
+      destroy() {
+        this.mounted = false;
+        console.log(`${this.name} destroyed`);
+      }
+    }
+
+    const app = new FakeComponent('LayoutRenderer');
+    app.mount();
+    app.update('auth', false);
+    app.update('cacheKey', 'xyz-v2.19');
+  </script>
+
+  <script>
+    // Fake backend event
+    const _xev = {
+      queue: [],
+      enqueue: (e) => _xev.queue.push(e),
+      flush: () => _xev.queue.forEach(e => console.debug('flushed:', e))
+    };
+
+    for (let i = 0; i < 40; i++) {
+      _xev.enqueue({ id: i, event: 'noop', payload: { foo: 'bar', ts: Date.now() } });
+    }
+
+    setTimeout(() => {
+      _xev.flush();
+    }, 2000);
+  </script>
+</body>
+</html>

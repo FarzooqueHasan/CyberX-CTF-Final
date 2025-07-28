@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Level 4 - CyberX CTF</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🧬 Level 4: Synapse Scrambler</h1>
+    <p>The system has scrambled. Use your quantum decoders to reconstruct order...</p>
+    <form method="POST" action="/submitFlag" class="flag-form">
+      <input type="text" name="flag" placeholder="Enter flag here..." required />
+      <button type="submit" class="btn">Submit Flag</button>
+    </form>
+    <div id="result" class="result-placeholder"></div>
+  </div>
+
+  <div class="flag-counter">Flags Collected: <span id="flagCount">3</span></div>
+
+  <script src="/js/level4.js"></script>
+</body>
+</html>
