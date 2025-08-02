@@ -9,8 +9,6 @@ const helmet = require('helmet');
 const fs = require('fs');
 const path = require('path');
 
-const app = express();
-const PORT = 3000;
 
 // ------------------------
 // Middleware & Security
@@ -196,8 +194,8 @@ app.use((req, res) => {
 // ------------------------
 // Server Start
 // ------------------------
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`🚀 CyberX CTF running on http://localhost:${PORT}`);
-});
-
+  console.log(`Server is running on port ${PORT}`);
+})
 app.use(express.static('public'));
