@@ -8,7 +8,7 @@ const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
 const fs = require('fs');
 const path = require('path');
-
+const app = express();
 
 // ------------------------
 // Middleware & Security
